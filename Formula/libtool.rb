@@ -46,10 +46,12 @@ class Libtool < Formula
     end
   end
 
-  def caveats; <<~EOS
+  def caveats
+    if build.with? "without-default-names"; <<~EOS
     In order to prevent conflicts with Apple's own libtool we have prepended a "g"
     so, you have instead: glibtool and glibtoolize.
-  EOS
+    EOS
+    end
   end
 
   test do
